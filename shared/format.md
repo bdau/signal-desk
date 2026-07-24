@@ -17,7 +17,7 @@ Text:         primary #d5dce6 | muted #7c8794
 Accents:     positive #16c784 | negative #ea3943 | neutral #e0a417 | source-link #155DFC | in-body link #4aa8ff
 Type:        headings/labels/mono -> 'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace
              body -> -apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif
-Container:   640px, border-radius 3px, 28px side padding
+Container:   fluid width, max 1100px, border-radius 3px, 28px side padding
 </design_tokens>
 
 <shell>
@@ -35,7 +35,7 @@ Container:   640px, border-radius 3px, 28px side padding
 <body style="margin:0;padding:0;background:#080b11;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#080b11" style="background:#080b11;">
 <tr><td align="center" style="padding:24px 12px;">
-<table role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f141c" style="width:640px;max-width:640px;background:#0f141c;border-radius:3px;border:1px solid #1e2733;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0f141c" style="width:100%;max-width:1100px;background:#0f141c;border-radius:3px;border:1px solid #1e2733;">
 
   <!-- MASTHEAD -->
   <tr><td style="padding:28px 28px 8px 28px;">
