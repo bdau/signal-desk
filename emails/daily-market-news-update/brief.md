@@ -27,17 +27,7 @@ Use only established financial media like those listed above. Exclude blogs, unv
 Each section is one section_wrapper row from email-format, containing a section_header plus the content described below. The five section headers already appear pre-built in the body layout at the end of this file.
 
 ### Section - Summary
-A short summary of the content below for a quick read. Populate {{SUMMARY_BODY}} with the prose and {{SUMMARY_SOURCES}} with the source list (each source a site-name link built with the email-format source_link component).
-
-Split into paragraphs to make it easy to read if required. For example, if one sentence relates to equity markets and the next relates to another asset class or economic news, split it into a new paragraph.
-
-#### Example
-Soft June US inflation is setting the tone for markets with headline CPI falling 0.4% on the month (the biggest monthly drop in over six years), pulling annual inflation to 3.5% (down from 4.2% and beating the 3.8% consensus). Core inflation was flat at 2.6% YoY. Markets have now reduced the odds of a July Fed hike to about 17% from 42%. On the back of this, Treasury yields fell and the dollar weakened.
-
-US equities rose on 14 July (S&P 500 +0.4%, Nasdaq Composite +0.9%), helped along by earnings beats from Goldman Sachs, JPMorgan, Bank of America and Wells Fargo and by a rebound in semiconductors after recent weakness. Asia extended the move into 15 July, with Korea's Kospi surging at the open (SK Hynix +10%, Samsung +6%) and mainland China up 2.15% after June exports grew at their fastest pace since 2021.
-
-The main offsetting factor is the US-Iran conflict escalation with the US striking  about 90 targets overnight, a reinstated shipping "blockade" on the Strait of Hormuz and Hormuz traffic down about 52% week on week. This kept Brent near $85 and WTI 
-near $80.
+A summary of the content below in the form of short dot points for a quick read. Populate {{SUMMARY_BODY}}
 
 ### Section - Market Tiles and Yield Tiles
 The market-performance grid is should display tiles for each ticker listed below in the order provided using the market-tile skill and yield-tile skill (for bonds and interest rates). The tickers are listed below in sections. For each heading below (e.g. Equities, Themes, Volatility etc.), include a title and then show the market tiles for that section. Build one tile_img per instrument and lay them out in {{MARKET_AND_YIELD_TILES}} using the tile_grid component, MAXIMUM three tiles per row. If a number is listed in brackets after the ticker and label, this is the number of decimal level to be shown, and this should be used by the market-tile skill to pass to the market-tile API.
@@ -109,7 +99,7 @@ Same as Positive, but for topics with negative market sentiment. Use the negativ
 </section>
 
 ## Citation requirements
-Summary: end each section with its source list in {{SUMMARY_SOURCES}}, each source a site-name hyperlink built with the email-format source_link component, separated by a single space. Positive and Negative: each card's sources are site-name source_link hyperlinks; any in-body prose link uses the email-format link component. Every &lt;a&gt; must carry the inline style from its template.
+Each source a site-name hyperlink built with the email-format source_link component, separated by a single space. Each card's sources are site-name source_link hyperlinks; any in-body prose link uses the email-format link component. Every &lt;a&gt; must carry the inline style from its template.
 
 ## Market-specific components
 Repeat these once per row / item / tile. Substitute only the {{...}} placeholders; leave every style attribute exactly as written. (These live here, not in email-format, because only this email currently uses them. Promote to email-format if a second email needs them.)
@@ -160,14 +150,13 @@ Wraps a card's tiles, MAXIMUM three per row. Up to three tile_img blocks, each i
 ```
 
 ## Body layout ({{BODY_CONTENT}} for the email-format shell)
-Assemble this block and pass it as {{BODY_CONTENT}} to the email-format shell. Placeholders to fill: {{SUMMARY_BODY}}, {{SUMMARY_SOURCES}}, {{POSITIVE_ITEMS}}, {{NEGATIVE_ITEMS}}. The market-performance grid is fixed; do not edit it. The section headers here are the email-format section_header component (Positive/Negative carry the status-dot span).
+Assemble this block and pass it as {{BODY_CONTENT}} to the email-format shell. Placeholders to fill: {{SUMMARY_BODY}}, {{POSITIVE_ITEMS}}, {{NEGATIVE_ITEMS}}. The market-performance grid is fixed; do not edit it. The section headers here are the email-format section_header component (Positive/Negative carry the status-dot span).
 
 ```html
   <!-- SUMMARY -->
   <tr><td style="padding:24px 28px 4px 28px;">
     <div style="font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;font-size:20px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#d5dce6;padding:0 0 10px 0;border-bottom:2px solid #1e2733;margin:0 0 18px 0;">Summary</div>
     <div style="font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:21px;line-height:1.65;color:#d5dce6;">{{SUMMARY_BODY}}</div>
-    <div style="font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.5;color:#7c8794;margin-top:10px;">{{SUMMARY_SOURCES}}</div>
   </td></tr>
 
   <!-- MARKET PERFORMANCE -->

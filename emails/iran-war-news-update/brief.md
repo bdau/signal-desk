@@ -27,7 +27,7 @@ Sources to scan:
 Each section is one section_wrapper row from email-format, containing a section_header plus the content described below. The five section headers already appear pre-built in the body layout at the end of this file.
 
 ### Section - Summary
-A short 1-paragrapha summary of the content below for a quick read. Populate {{SUMMARY_BODY}} with the prose and {{SUMMARY_SOURCES}} with the source list (each source a site-name link built with the email-format source_link component).
+A summary of the content below in the form of short dot points for a quick read. Populate {{SUMMARY_BODY}}
 
 ### Section - Military Action
 Select the major news stories about military actions, escalations and changes in strategy. For each topic, produce ONE card: a 30-60 word body in {{BODY}}, a short headline in {{HEADLINE}}, and site-name source links in {{ITEM_SOURCES}} (email-format source_link).
@@ -46,7 +46,7 @@ Select the major news stories relating to impacts of the war on the rest of the 
 
 
 ## Citation requirements
-Summary: end each section with its source list in {{SUMMARY_SOURCES}}, each source a site-name hyperlink built with the email-format source_link component, separated by a single space. Each card's sources are site-name source_link hyperlinks; any in-body prose link uses the email-format link component. Every &lt;a&gt; must carry the inline style from its template.
+Each source a site-name hyperlink built with the email-format source_link component, separated by a single space. Each card's sources are site-name source_link hyperlinks; any in-body prose link uses the email-format link component. Every &lt;a&gt; must carry the inline style from its template.
 
 # HTML formatting
 
@@ -63,14 +63,13 @@ Summary: end each section with its source list in {{SUMMARY_SOURCES}}, each sour
 ```
 
 ## Body layout ({{BODY_CONTENT}} for the email-format shell)
-Assemble this block and pass it as {{BODY_CONTENT}} to the email-format shell. Placeholders to fill: {{SUMMARY_BODY}}, {{SUMMARY_SOURCES}}, {{NEWS_ITEMS}}. The section headers here are the email-format section_header component.
+Assemble this block and pass it as {{BODY_CONTENT}} to the email-format shell. Placeholders to fill: {{SUMMARY_BODY}}, {{NEWS_ITEMS}}. The section headers here are the email-format section_header component.
 
 ```html
   <!-- SUMMARY -->
   <tr><td style="padding:24px 28px 4px 28px;">
     <div style="font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;font-size:20px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#d5dce6;padding:0 0 10px 0;border-bottom:2px solid #1e2733;margin:0 0 18px 0;">Summary</div>
     <div style="font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:21px;line-height:1.65;color:#d5dce6;">{{SUMMARY_BODY}}</div>
-    <div style="font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.5;color:#7c8794;margin-top:10px;">{{SUMMARY_SOURCES}}</div>
   </td></tr>
 
   <!-- NEWS ITEMS -->
