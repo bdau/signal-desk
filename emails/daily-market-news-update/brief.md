@@ -132,15 +132,25 @@ Repeat these once per row / item / tile. Substitute only the {{...}} placeholder
 ```
 
 ## Market tile and Yield tile image
-One &lt;img&gt; per instrument tile, 168px wide. Each tile is an inline-block box, so tiles flow left-to-right and wrap onto the next line automatically based on the available width. Build the &lt;img&gt; from the resolved tile URL (leave the URL's size=390 parameter as-is for a sharp image); do NOT paste the skill's default width=390 markup.
+One tile per instrument: a 168px-wide &lt;img&gt; sitting in a 178px inline-block column, so tiles flow left-to-right and wrap onto the next line based on the available width. The `<!--[if mso]>` cell around it is the Outlook fallback — Outlook (Windows/Word engine) ignores inline-block, so it reads the tile as a real table cell instead (the tile_grid supplies the surrounding table and row structure). Modern clients ignore the MSO comments entirely. Build the &lt;img&gt; from the resolved tile URL (leave the URL's size=390 parameter as-is for a sharp image); do NOT paste the skill's default width=390 markup.
 ```html
-<img src="{{TILE_URL}}" width="168" alt="{{LABEL}}" style="display:inline-block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;margin:5px;vertical-align:top;">
+<!--[if mso]><td valign="top" width="178"><![endif]-->
+<div style="display:inline-block;width:178px;max-width:178px;vertical-align:top;text-align:center;font-size:0;line-height:0;"><img src="{{TILE_URL}}" width="168" alt="{{LABEL}}" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;margin:5px auto;"></div>
+<!--[if mso]></td><![endif]-->
 ```
 
 ## Market tile and Yield tile grid
-Wraps a group of tiles. Concatenate every tile_img for the group (no fixed number per row) and drop them all into {{TILES}}. The tiles flow left-to-right and wrap onto the next line automatically based on the available width, and the container centres each row. This block is the value of {{ITEM_TILES}} in a card, and of each labelled group in the Market Performance section. `font-size:0`/`line-height:0` on the container removes the whitespace gaps between inline-block tiles; the tile's own margin provides the spacing.
+Wraps a group of tiles. Concatenate every tile_img for the group into {{TILES}}. Modern clients: the tiles are inline-block columns that wrap onto the next line automatically based on the available width, centred by the container (`font-size:0`/`line-height:0` removes the whitespace gaps between them). Outlook: the `<!--[if mso]>` ghost table below turns the group into a real, centred 3-column table because Outlook does not wrap inline-block — so between every third tile and the next in {{TILES}}, insert the Outlook row-break marker `<!--[if mso]></tr><tr><![endif]-->` (after the 3rd, 6th, 9th... tile, but NOT after the final tile). Modern clients ignore every MSO comment and keep wrapping on width. This block is the value of {{ITEM_TILES}} in a card, and of each labelled group in the Market Performance section.
 ```html
-<div style="text-align:center;font-size:0;line-height:0;">{{TILES}}</div>
+<div style="text-align:center;font-size:0;line-height:0;">
+<!--[if mso]><table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr><![endif]-->
+{{TILES}}
+<!--[if mso]></tr></table><![endif]-->
+</div>
+```
+Outlook row break — place after every third tile in {{TILES}} (not after the last):
+```html
+<!--[if mso]></tr><tr><![endif]-->
 ```
 
 ## Body layout ({{BODY_CONTENT}} for the email-format shell)
