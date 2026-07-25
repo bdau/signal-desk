@@ -5,7 +5,7 @@ Delivery layer, fetched at run time. Follow this last, once the HTML is fully as
 <inputs>
 Read these from the sending email's `config.yaml`:
 - `subject` - the email subject line.
-- `from` - sender address (framework default: claude@updates.dunn.fm).
+- `from` - sender address (framework default: "Signal Desk <claude@updates.dunn.fm>").
 - `to` - one or more recipient addresses, OR
 - `audience_id` - a Resend audience ID to send to instead of an inline `to` list.
 Exactly one of `to` / `audience_id` should be set. If both are present, prefer `audience_id`.
