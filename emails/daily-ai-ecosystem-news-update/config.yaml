@@ -1,8 +1,8 @@
-# Daily Market Update - delivery + shell config
+# Daily AI Ecosystem News Update - delivery + shell config
 name: daily-ai-ecosystem-news
-title: AI Ecosystem Update    # used for {{EMAIL_TITLE}} (page title + masthead)
-brand: AI Got Something to Say      # {{BRAND}} 
-subject: Daily AI Ecosystem Update
+title: AI Ecosystem Update                     # used for {{EMAIL_TITLE}} (page title + masthead)
+brand: Signal Desk.                            # {{BRAND}} 
+subject: Daily AI Ecosystem Update - {{DATE}}  # {{SUBJECT}} (email subject line)
 
 # Cadence (mirror of the scheduled task; source of truth is the scheduled task itself)
 schedule: "0 5 * * *"               # 05:00 daily
