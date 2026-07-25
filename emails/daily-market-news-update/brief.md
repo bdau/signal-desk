@@ -30,7 +30,7 @@ Each section is one section_wrapper row from email-format, containing a section_
 A summary of the content below in the form of short dot points for a quick read. Populate {{SUMMARY_BODY}}
 
 ### Section - Market Tiles and Yield Tiles
-The market-performance grid is should display tiles for each ticker listed below in the order provided using the market-tile skill and yield-tile skill (for bonds and interest rates). The tickers are listed below in sections. For each heading below (e.g. Equities, Themes, Volatility etc.), include a title and then show the market tiles for that section. Build one tile_img per instrument and lay them out in {{MARKET_AND_YIELD_TILES}} using the tile_grid component, MAXIMUM three tiles per row. If a number is listed in brackets after the ticker and label, this is the number of decimal level to be shown, and this should be used by the market-tile skill to pass to the market-tile API.
+The market-performance grid is should display tiles for each ticker listed below in the order provided using the market-tile skill and yield-tile skill (for bonds and interest rates). The tickers are listed below in sections. For each heading below (e.g. Equities, Themes, Volatility etc.), include a title and then show the market tiles for that section. Build one tile_img per instrument and lay them out in {{MARKET_AND_YIELD_TILES}} using the tile_grid component (tiles wrap to fit the available width; no fixed number per row). If a number is listed in brackets after the ticker and label, this is the number of decimal level to be shown, and this should be used by the market-tile skill to pass to the market-tile API.
 
 Equities:
   GSPC.INDX S&P500 (0)
@@ -83,7 +83,7 @@ Yields:
 The yield curves section contains an image returned from using the yield-curve skill. Build one img using the list of the following country codes: US, UK, DE, JP, AU and put it in {{YIELD_CURVE_IMAGE}}
 
 ### Section - Positive News
-Select the key topics with positive market sentiment and summarise each. For each topic, produce ONE card using the positive_item component: a 30-60 word body in {{BODY}}, a short headline in {{HEADLINE}}, and site-name source links in {{ITEM_SOURCES}} (email-format source_link). Identify EVERY instrument the topic mentions (each company/stock, asset class, commodity, currency, cryptocurrency) and resolve each to an EODHD SYMBOL.EXCHANGE ticker with the market-tile skill (use the relevant index tile for a sector or broad asset class). Build one tile_img per instrument and lay them out in {{ITEM_TILES}} using the tile_grid component, MAXIMUM three tiles per row. If the topic mentions no tradable instrument, leave {{ITEM_TILES}} empty. Concatenate all cards into {{POSITIVE_ITEMS}}.
+Select the key topics with positive market sentiment and summarise each. For each topic, produce ONE card using the positive_item component: a 30-60 word body in {{BODY}}, a short headline in {{HEADLINE}}, and site-name source links in {{ITEM_SOURCES}} (email-format source_link). Identify EVERY instrument the topic mentions (each company/stock, asset class, commodity, currency, cryptocurrency) and resolve each to an EODHD SYMBOL.EXCHANGE ticker with the market-tile skill (use the relevant index tile for a sector or broad asset class). Build one tile_img per instrument and lay them out in {{ITEM_TILES}} using the tile_grid component (tiles wrap to fit the available width). If the topic mentions no tradable instrument, leave {{ITEM_TILES}} empty. Concatenate all cards into {{POSITIVE_ITEMS}}.
 
 #### Example
 Headline CPI fell 0.4% MoM in June to a 3.5% annual rate (from 4.2%), beating the 3.8% consensus, while core was flat m/m at a 2.6% annual rate, down from 2.9%. This is unusual because the Fed under new Chair Kevin Warsh had been leaning hawkish and flirting with a hike, not a cut, due to an Iran-conflict energy price shock, with funds still parked at 3.50-3.75%.
@@ -132,21 +132,15 @@ Repeat these once per row / item / tile. Substitute only the {{...}} placeholder
 ```
 
 ## Market tile and Yield tile image
-One &lt;img&gt; per instrument tile. Width 168 so three tiles fit across a card row. Build the &lt;img&gt; from the resolved tile URL (leave the URL's size=390 parameter as-is for a sharp image); do NOT paste the skill's default width=390 markup.
+One &lt;img&gt; per instrument tile, 168px wide. Each tile is an inline-block box, so tiles flow left-to-right and wrap onto the next line automatically based on the available width. Build the &lt;img&gt; from the resolved tile URL (leave the URL's size=390 parameter as-is for a sharp image); do NOT paste the skill's default width=390 markup.
 ```html
-<img src="{{TILE_URL}}" width="168" alt="{{LABEL}}" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;">
+<img src="{{TILE_URL}}" width="168" alt="{{LABEL}}" style="display:inline-block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;margin:5px;vertical-align:top;">
 ```
 
 ## Market tile and Yield tile grid
-Wraps a card's tiles, MAXIMUM three per row. Up to three tile_img blocks, each in its own &lt;td&gt;, inside one &lt;tr&gt;; start a new &lt;tr&gt; after every third. Drop unused &lt;td&gt; cells in the final row. The whole table is the value of {{ITEM_TILES}}.
+Wraps a group of tiles. Concatenate every tile_img for the group (no fixed number per row) and drop them all into {{TILES}}. The tiles flow left-to-right and wrap onto the next line automatically based on the available width, and the container centres each row. This block is the value of {{ITEM_TILES}} in a card, and of each labelled group in the Market Performance section. `font-size:0`/`line-height:0` on the container removes the whitespace gaps between inline-block tiles; the tile's own margin provides the spacing.
 ```html
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-  <tr>
-    <td align="center" valign="top" style="padding:4px;">{{TILE_1}}</td>
-    <td align="center" valign="top" style="padding:4px;">{{TILE_2}}</td>
-    <td align="center" valign="top" style="padding:4px;">{{TILE_3}}</td>
-  </tr>
-</table>
+<div style="text-align:center;font-size:0;line-height:0;">{{TILES}}</div>
 ```
 
 ## Body layout ({{BODY_CONTENT}} for the email-format shell)
