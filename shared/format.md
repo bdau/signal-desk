@@ -31,6 +31,15 @@ Container:   fluid width, max 1100px, border-radius 3px, 28px side padding
   <meta name="color-scheme" content="dark">
   <meta name="supported-color-schemes" content="dark">
   <title>{{EMAIL_TITLE}}</title>
+  <style>
+    /* Phone-width market/yield tiles: shrink so two fit per row instead of one.
+       Apple Mail / iOS Mail honour this; clients that ignore embedded <style>
+       (e.g. Outlook desktop) keep the default 168px tile. */
+    @media only screen and (max-width:430px) {
+      .tile-col { width:146px !important; max-width:146px !important; }
+      .tile-img { width:140px !important; max-width:140px !important; }
+    }
+  </style>
 </head>
 <body style="margin:0;padding:0;background:#080b11;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#080b11" style="background:#080b11;">

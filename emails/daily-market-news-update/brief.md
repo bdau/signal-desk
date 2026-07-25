@@ -132,10 +132,10 @@ Repeat these once per row / item / tile. Substitute only the {{...}} placeholder
 ```
 
 ## Market tile and Yield tile image
-One tile per instrument: a 168px-wide &lt;img&gt; sitting in a 178px inline-block column, so tiles flow left-to-right and wrap onto the next line based on the available width. The `<!--[if mso]>` cell around it is the Outlook fallback — Outlook (Windows/Word engine) ignores inline-block, so it reads the tile as a real table cell instead (the tile_grid supplies the surrounding table and row structure). Modern clients ignore the MSO comments entirely. Build the &lt;img&gt; from the resolved tile URL (leave the URL's size=390 parameter as-is for a sharp image); do NOT paste the skill's default width=390 markup.
+One tile per instrument: a 168px-wide &lt;img&gt; sitting in a 178px inline-block column, so tiles flow left-to-right and wrap onto the next line based on the available width. The `<!--[if mso]>` cell around it is the Outlook fallback — Outlook (Windows/Word engine) ignores inline-block, so it reads the tile as a real table cell instead (the tile_grid supplies the surrounding table and row structure). Modern clients ignore the MSO comments entirely. Keep the `tile-col` and `tile-img` classes: the email-format shell has a phone-width media query that uses them to shrink tiles so two fit per row on an iPhone. Build the &lt;img&gt; from the resolved tile URL (leave the URL's size=390 parameter as-is for a sharp image); do NOT paste the skill's default width=390 markup.
 ```html
 <!--[if mso]><td valign="top" width="178"><![endif]-->
-<div style="display:inline-block;width:178px;max-width:178px;vertical-align:top;text-align:center;font-size:0;line-height:0;"><img src="{{TILE_URL}}" width="168" alt="{{LABEL}}" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;margin:5px auto;"></div>
+<div class="tile-col" style="display:inline-block;width:178px;max-width:178px;vertical-align:top;text-align:center;font-size:0;line-height:0;"><img class="tile-img" src="{{TILE_URL}}" width="168" alt="{{LABEL}}" style="display:block;width:168px;max-width:168px;height:auto;border:0;border-radius:3px;margin:5px auto;"></div>
 <!--[if mso]></td><![endif]-->
 ```
 
