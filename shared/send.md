@@ -24,5 +24,5 @@ Distribution lists are kept in Resend (audiences/segments), referenced by `audie
 </why_audiences_live_in_resend>
 
 <defaults>
-from: claude@updates.dunn.fm
+from: "Signal Desk <claude@updates.dunn.fm>"
 </defaults>
