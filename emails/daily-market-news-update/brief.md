@@ -42,7 +42,7 @@ Equities:
   AXJO.INDX S&P/ASX200 (0)
 
   NDX.INDX Nasdaq 100 (0)
-  IXIC.INDX.INDX Nasdaq Composite (0)
+  IXIC.INDX Nasdaq Composite (0)
 
 Themes:
   SOX.INDX SOX (0)
