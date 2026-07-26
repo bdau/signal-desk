@@ -9,7 +9,7 @@ A daily market briefing to inform an investment professional interested in the m
 Daily email. Include only things mentioned in articles from the last 36 hours (see `lookback_hours` in config).
 
 ## Sources
-WSJ.com, FT.com, Bloomberg.com, CNBC.com, Reuters.com, ZeroHedge.com, MarketWatch.com, ft.com/alphaville, economist.com, nikkei.com, sell-side research, central bank releases, company filings, regulatory filings.
+Yahoo Finance, ZeroHedge.com, economist.com, nikkei.com, sell-side research, central bank releases, company filings, regulatory filings.
 
 ## Credibility Criteria
 Use only established financial media like those listed above. Exclude blogs, unverified social media, and aggregators that don't cite a primary source.
