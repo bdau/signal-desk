@@ -14,6 +14,7 @@ signal-desk/
     format.md          the HTML shell, design tokens, universal components
     send.md            delivery instructions (Resend, recipients/audience)
     house-style.md     voice and tone common to all emails
+    state.md           read the last sent email to avoid repeating news
   emails/
     daily-market-update/
       brief.md         research spec, email-specific components, body layout
@@ -49,3 +50,4 @@ Change a schedule or pause a task: edit the task's cron time or enabled state in
 - Keep nothing secret in this repo. Recipient lists live in Resend as audiences (referenced by `audience_id`), not here. The from-address is not a secret. This lets the repo be public, which keeps fetching simple.
 - Everything a run needs is cloud-available: web fetch, web search, the market-tile endpoint (public URL), and Resend (a connector).
 - After creating or repointing a task, Run now once so it pre-approves web search, web fetch, market-tile, and Resend; otherwise a scheduled run can stall on a permission prompt.
+- News digests avoid repeating themselves via `shared/state.md`: each run reads the last sent copy of that email from Resend and dedups/deltas against it. This needs the Resend connector to allow reading email history (`list-emails`, `get-email`), not just sending — approve those on the first Run now. Memory is one day only (the last email), by design.

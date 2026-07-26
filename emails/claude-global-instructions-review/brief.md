@@ -69,3 +69,4 @@ Assemble this block and pass it as {{BODY_CONTENT}} to the email-format shell. P
 
 ## Execution notes
 - {{DATE}} is today's date, formatted like "9 July 2026" (bash: `date +"%-d %B %Y"`).
+- This email does not use state tracking (`shared/state.md`). Substitute {{MANIFEST}} in the shell with an empty string.

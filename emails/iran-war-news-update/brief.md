@@ -15,6 +15,7 @@ Sources to scan:
 - relevant military blogs
 
 ## Research Instructions
+- Avoid repeats — follow `shared/state.md`. FIRST, read the last sent copy of this email and apply its dedup/delta rules: drop stories it already covered, and for continuing stories report only what has materially changed since last time (never restate). AFTER assembling the email, emit this run's manifest and pass it as {{MANIFEST}} to the `shared/format.md` shell.
 - Stay within each section's research focus; do not let findings bleed across sections.
 - Note the publication date of every fact used.
 - Flag conflicting information between sources rather than silently picking one.

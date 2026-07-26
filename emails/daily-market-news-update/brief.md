@@ -15,6 +15,7 @@ Yahoo Finance, ZeroHedge.com, economist.com, nikkei.com, sell-side research, cen
 Use only established financial media like those listed above. Exclude blogs, unverified social media, and aggregators that don't cite a primary source.
 
 ## Research Instructions
+- Avoid repeats — follow `shared/state.md`. FIRST, read the last sent copy of this email and apply its dedup/delta rules: drop stories it already covered, and for continuing stories report only what has materially changed since last time (never restate). AFTER assembling the email, emit this run's manifest and pass it as {{MANIFEST}} to the `shared/format.md` shell.
 - Stay within each section's research focus; do not let findings bleed across sections.
 - Note the publication date of every fact used.
 - Flag conflicting information between sources rather than silently picking one.
