@@ -56,19 +56,20 @@ FX
   DXY.INDX DXY (2)
   EURUSD.FOREX EUR (2)
   USDJPY.FOREX JPY (2)
-
   GBPUSD.FOREX GBP (2)
   AUDUSD.FOREX AUD (2)
 
 Crypto:
   BTC-USD.CC Bitcoin (0)
   ETH-USD.CC Ethereum (0)
+  BNB-USD.CC BNB (3)
+  XRP-USD.CC XRP (0)
+  SOL-USD.CC Solana (2)
 
 Commodities:
   GC.COMM Gold (0)
   SI.COMM Silver (2)
   HG.COMM Copper (2)
-
   CL.COMM WTI Crude (2)
   BZ.COMM Brent Crude (2)
 
