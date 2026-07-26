@@ -1,4 +1,4 @@
-# scheduled-emails
+# signal-desk
 
 Source of truth for scheduled research emails. Each email runs as a Claude cloud scheduled task that fetches these files at run time and sends via Resend. Nothing is copied into the tasks, so this repo is the one place to edit.
 
@@ -9,7 +9,7 @@ Each scheduled task carries a short prompt (see `TASK-PROMPT-TEMPLATE.md`) that 
 Layered so the shared look and delivery live once and each email owns only its content:
 
 ```
-scheduled-emails/
+signal-desk/
   shared/
     format.md          the HTML shell, design tokens, universal components
     send.md            delivery instructions (Resend, recipients/audience)
@@ -26,7 +26,7 @@ scheduled-emails/
 
 ## Publishing with tags
 
-Point the tasks at a pinned tag (e.g. `.../scheduled-emails/v1/...`) rather than `main`. Edit on `main`, and when a change is ready to go live, move the tag:
+Point the tasks at a pinned tag (e.g. `.../signal-desk/v1/...`) rather than `main`. Edit on `main`, and when a change is ready to go live, move the tag:
 
 ```
 git tag -f v1 && git push -f origin v1
