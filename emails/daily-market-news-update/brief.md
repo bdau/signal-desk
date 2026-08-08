@@ -27,6 +27,8 @@ Use only established financial media like those listed above. Exclude blogs, unv
 ## Sections (in order)
 Each section is one section_wrapper row from email-format, containing a section_header plus the content described below. The five section headers already appear pre-built in the body layout at the end of this file.
 
+If any section has no news/update, simply don't show it and don't make reference to it in the summary.
+
 ### Section - Summary
 A summary of the content below in the form of short dot points for a quick read. Populate {{SUMMARY_BODY}}
 
